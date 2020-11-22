@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Course Registration</title>
+</head>
+
+<body>
+
+    <script>
+        describe = () => {
+            courses = [] //Empty Lists
+            grades = []
+            while (true) {
+                let course = prompt("Enter course('Enter space bar to quit'): ") //Teachers types in courses
+                if (course === " ") {
+                    break
+                }
+                let grade = Number(prompt("Enter grade: "))
+                if (grade === " ") {
+                    break
+                }
+                if (grade >= 75 && grade <= 100) {
+                    console.log(`${course}: ${grade}\nA1 - Excellent`)
+                } else if (grade >= 70 && grade <= 75) {
+                    console.log(`${course}:${grade}\nB2 - Very Good`)
+                } else if (grade >= 65 && grade <= 69) {
+                    console.log(`${course}:${grade}\nB3 - Very Good`)
+                } else if (grade >= 60 && grade <= 64) {
+                    console.log(`${course}:${grade}\nC4- Credit`)
+                } else if (grade >= 55 && grade <= 59) {
+                    console.log(`${course}:${grade}\nC5 - Credit`)
+                } else if (grade >= 50 && grade <= 54) {
+                    console.log(`${course}:${grade}\nC6 - Good`)
+                } else if (grade >= 45 && grade <= 49) {
+                    console.log(`${course}:${grade}\nD7 - pass`)
+                } else if (grade >= 40 && grade <= 44) {
+                    console.log(`${course}:${grade}\nE8 - Pass`)
+                } else if (grade >= 0 && grade <= 39) {
+                    console.log(`${course}:${grade}\nF9 - Fail`)
+                }
+                courses.push(course)
+                grades.push(grade)
+            }
+            return `List of registered courses: \n${courses}`
+        }
+        total_obtained = () => {
+            console.log("Total Obtained: ")
+            let total_obtain = grades.reduce((prev, next) => prev + next)
+            return total_obtain
+        }
+        total_obtainable = () => {
+            console.log("Total Obtainable: ")
+            let totalObtainable = courses.length * 100
+            return totalObtainable
+        }
+        total_average = () => {
+            console.log("Total Average")
+            let average = (total_obtained() / total_obtainable()) * 100
+            return average.toFixed(1)
+        }
+        console.log(describe())
+        console.log(total_obtained())
+        console.log(total_obtainable())
+        console.log(total_average())
+    </script>
+
+    </section>
+</body>
+
+</html>
