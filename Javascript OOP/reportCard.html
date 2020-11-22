@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width= device-width, initial-scale=1" />
+</head>
+
+<body>
+    <div class="container"></div>
+
+    <script>
+        class Course {
+            constructor() {
+                this.courses = [] //Empty lists
+                this.grades = []
+            }
+            describe() {
+                while (true) {
+                    let courses = prompt("Enter course(Enter space bar to quit): ") //Teacher enters course
+                    if (courses === " ") { //Allows teacher to press space bar to quit
+                        break
+                    }
+                    let grades = Number(prompt("Enter grade: "))
+                    if (grades === " ") {
+                        break
+                    }
+                    //Students grades and comment
+                    if (grades >= 75 && grades <= 100) {
+                        console.log(`${courses}:${grades}\nA1 - Excellent`)
+                    } else if (grades >= 70 && grades <= 75) {
+                        console.log(`${courses}:${grades}\nB2 - Very Good`)
+                    } else if (grades >= 65 && grades <= 69) {
+                        console.log(`${courses}:${grades}\nB3 - Very Good`)
+                    } else if (grades >= 60 && grades <= 64) {
+                        console.log(`${courses}:${grades}\nC4- Credit`)
+                    } else if (grades >= 55 && grades <= 59) {
+                        console.log(`${courses}:${grades}\nC5 - Credit`)
+                    } else if (grades >= 50 && grades <= 54) {
+                        console.log(`${courses}:${grades}\nC6 - Good`)
+                    } else if (grades >= 45 && grades <= 49) {
+                        console.log(`${courses}:${grades}\nD7 - pass`)
+                    } else if (grades >= 40 && grades <= 44) {
+                        console.log(`${courses}:${grades}\nE8 - Pass`)
+                    } else if (grades >= 0 && grades <= 39) {
+                        console.log(`${courses}:${grades}\nF9 - Fail`)
+                    }
+
+                    this.courses.push(courses) //Adds list of coursesto empty list
+                    this.grades.push(grades)
+                }
+
+                console.log(`List of Registered courses: \n${this.courses}: `) //Print all registered courses
+            }
+
+            total_obtained() {
+                console.log("Total Obtained")
+                let total = this.grades.reduce((total, amount) => total + amount)
+                return total
+            }
+
+            total_obtainable() {
+                console.log("Total Obtainable")
+                let obtainable = this.courses.length * 100
+                return obtainable
+            }
+
+            total_average() {
+                console.log("Total average")
+                let average = (this.total_obtained() / this.total_obtainable()) * 100
+                return average.toFixed(1)
+            }
+
+        }
+        let course = new Course()
+        course.describe()
+        console.log(course.total_obtained())
+        console.log(course.total_obtainable())
+        console.log(course.total_average())
+    </script>
+</body>
+
+
+</html>
